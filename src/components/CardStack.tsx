@@ -2,6 +2,7 @@
 import { useProductStore } from "@/store/productStore";
 import { SwipeableCard } from "./SwipeableCard";
 import { ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from "lucide-react";
+import { useEffect } from "react";
 
 export const CardStack = () => {
   const { products, currentIndex } = useProductStore();
@@ -11,6 +12,33 @@ export const CardStack = () => {
     currentIndex, 
     Math.min(currentIndex + 3, products.length)
   );
+  
+  // Add keyboard event listeners for arrow keys
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (visibleProducts.length === 0) return;
+      
+      const currentProduct = visibleProducts[0];
+      
+      switch (e.key) {
+        case "ArrowLeft":
+          useProductStore.getState().dislikeProduct(currentProduct.id);
+          useProductStore.getState().nextProduct();
+          break;
+        case "ArrowRight":
+          useProductStore.getState().likeProduct(currentProduct.id);
+          useProductStore.getState().nextProduct();
+          break;
+        case "ArrowUp":
+          useProductStore.getState().addToCart(currentProduct.id);
+          useProductStore.getState().nextProduct();
+          break;
+      }
+    };
+    
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [visibleProducts]);
   
   // Display empty state if no products
   if (visibleProducts.length === 0) {
@@ -41,8 +69,8 @@ export const CardStack = () => {
         />
       ))}
       
-      {/* Enhanced swipe instruction buttons at the bottom */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-10 py-6">
+      {/* Enhanced swipe instruction buttons with improved z-index */}
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-10 py-6 z-20">
         <button 
           className="bg-red-500 p-4 rounded-full text-white shadow-lg hover:bg-red-600 transition-all duration-300 transform hover:scale-110"
           aria-label="Dislike"

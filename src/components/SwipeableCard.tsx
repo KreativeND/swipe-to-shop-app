@@ -44,7 +44,7 @@ export const SwipeableCard = ({ product, isActive }: SwipeableCardProps) => {
     
     // Create and save the initial GSAP instance
     gsap.set(cardRef.current, { 
-      z: 50 // Bring to front during drag
+      z: 10 // Bring to front during drag but keep below buttons
     });
   };
 
@@ -56,17 +56,17 @@ export const SwipeableCard = ({ product, isActive }: SwipeableCardProps) => {
     offsetX.current = clientX - startX.current;
     offsetY.current = clientY - startY.current;
     
-    // Apply rotation based on horizontal movement (smoother rotation)
-    const rotation = offsetX.current * 0.08;
+    // Apply rotation based on horizontal movement (with reduced calculation for better performance)
+    const rotation = offsetX.current * 0.05;
     
-    // Update the position of the card with improved smoothness
+    // Update the position of the card with faster animations
     gsap.to(cardRef.current, {
       x: offsetX.current,
       y: offsetY.current,
       rotation: rotation,
-      duration: 0.2, // Slightly longer duration for smoother feel
-      ease: "power2.out", // Changed to power2 for smoother easing
-      overwrite: "auto" // Ensures smooth transitions between rapid movements
+      duration: 0.1, // Faster duration for more responsive feel
+      ease: "power1.out", // Simpler easing for better performance
+      overwrite: true // Ensures no animation queue buildup
     });
     
     // Determine swipe direction for visual feedback
@@ -133,15 +133,15 @@ export const SwipeableCard = ({ product, isActive }: SwipeableCardProps) => {
         break;
     }
     
-    // Animate the card off screen with improved animation
+    // Faster animation speed for card exit
     gsap.to(cardRef.current, {
       x,
       y,
       rotation,
       scale,
       opacity: 0,
-      duration: 0.6, // Slightly longer for smoother exit
-      ease: "power3.inOut", // More sophisticated easing
+      duration: 0.3, // Reduced from 0.6 to 0.3 for faster animation
+      ease: "power2.in", // Simplified easing for better performance
       onComplete: () => {
         nextProduct();
         setSwipeDirection(null);
@@ -157,8 +157,8 @@ export const SwipeableCard = ({ product, isActive }: SwipeableCardProps) => {
       x: 0,
       y: 0,
       rotation: 0,
-      duration: 0.5,
-      ease: "elastic.out(0.9, 0.4)", // Smoother elastic effect
+      duration: 0.3, // Faster reset
+      ease: "back.out(1.5)", // Different easing that's still smooth but faster
       onComplete: () => {
         setSwipeDirection(null);
       }
