@@ -56,16 +56,17 @@ export const SwipeableCard = ({ product, isActive }: SwipeableCardProps) => {
     offsetX.current = clientX - startX.current;
     offsetY.current = clientY - startY.current;
     
-    // Apply rotation based on horizontal movement
-    const rotation = offsetX.current * 0.1;
+    // Apply rotation based on horizontal movement (smoother rotation)
+    const rotation = offsetX.current * 0.08;
     
-    // Update the position of the card
+    // Update the position of the card with improved smoothness
     gsap.to(cardRef.current, {
       x: offsetX.current,
       y: offsetY.current,
       rotation: rotation,
-      duration: 0.1,
-      ease: "power1.out"
+      duration: 0.2, // Slightly longer duration for smoother feel
+      ease: "power2.out", // Changed to power2 for smoother easing
+      overwrite: "auto" // Ensures smooth transitions between rapid movements
     });
     
     // Determine swipe direction for visual feedback
@@ -112,6 +113,7 @@ export const SwipeableCard = ({ product, isActive }: SwipeableCardProps) => {
     let x = 0;
     let y = 0;
     let rotation = 0;
+    let scale = 1;
     
     switch (direction) {
       case 'right':
@@ -126,18 +128,20 @@ export const SwipeableCard = ({ product, isActive }: SwipeableCardProps) => {
         break;
       case 'up':
         y = -window.innerHeight - 200;
+        scale = 0.8;
         addToCart(product.id);
         break;
     }
     
-    // Animate the card off screen
+    // Animate the card off screen with improved animation
     gsap.to(cardRef.current, {
       x,
       y,
       rotation,
+      scale,
       opacity: 0,
-      duration: 0.5,
-      ease: "power2.in",
+      duration: 0.6, // Slightly longer for smoother exit
+      ease: "power3.inOut", // More sophisticated easing
       onComplete: () => {
         nextProduct();
         setSwipeDirection(null);
@@ -145,7 +149,7 @@ export const SwipeableCard = ({ product, isActive }: SwipeableCardProps) => {
     });
   };
   
-  // Reset card to center
+  // Reset card to center with improved animation
   const resetCard = () => {
     if (!cardRef.current) return;
     
@@ -153,8 +157,8 @@ export const SwipeableCard = ({ product, isActive }: SwipeableCardProps) => {
       x: 0,
       y: 0,
       rotation: 0,
-      duration: 0.3,
-      ease: "elastic.out(1, 0.3)",
+      duration: 0.5,
+      ease: "elastic.out(0.9, 0.4)", // Smoother elastic effect
       onComplete: () => {
         setSwipeDirection(null);
       }

@@ -36,9 +36,7 @@ const Index = () => {
         
         <footer className="py-4 px-4 border-t border-gray-100">
           <div className="container mx-auto text-center">
-            <p className="text-xs text-gray-500">
-              Swipe to Shop Demo App - Built with React, GSAP & Capacitor
-            </p>
+            {/* Footer text removed as requested */}
           </div>
         </footer>
       </div>

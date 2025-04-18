@@ -41,10 +41,10 @@ export const CardStack = () => {
         />
       ))}
       
-      {/* Swipe instruction buttons at the bottom */}
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-8 py-6">
+      {/* Enhanced swipe instruction buttons at the bottom */}
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-10 py-6">
         <button 
-          className="bg-red-100 p-3 rounded-full text-red-500"
+          className="bg-red-500 p-4 rounded-full text-white shadow-lg hover:bg-red-600 transition-all duration-300 transform hover:scale-110"
           aria-label="Dislike"
           onClick={() => {
             const currentProduct = visibleProducts[0];
@@ -52,11 +52,11 @@ export const CardStack = () => {
             useProductStore.getState().nextProduct();
           }}
         >
-          <ArrowLeftIcon />
+          <ArrowLeftIcon size={24} />
         </button>
         
         <button 
-          className="bg-blue-100 p-3 rounded-full text-blue-500"
+          className="bg-blue-500 p-4 rounded-full text-white shadow-lg hover:bg-blue-600 transition-all duration-300 transform hover:scale-110"
           aria-label="Add to cart"
           onClick={() => {
             const currentProduct = visibleProducts[0];
@@ -64,11 +64,11 @@ export const CardStack = () => {
             useProductStore.getState().nextProduct();
           }}
         >
-          <ArrowUpIcon />
+          <ArrowUpIcon size={24} />
         </button>
         
         <button 
-          className="bg-green-100 p-3 rounded-full text-green-500"
+          className="bg-green-500 p-4 rounded-full text-white shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-110"
           aria-label="Like"
           onClick={() => {
             const currentProduct = visibleProducts[0];
@@ -76,7 +76,7 @@ export const CardStack = () => {
             useProductStore.getState().nextProduct();
           }}
         >
-          <ArrowRightIcon />
+          <ArrowRightIcon size={24} />
         </button>
       </div>
     </div>
