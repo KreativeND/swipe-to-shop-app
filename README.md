@@ -1,73 +1,108 @@
-# Welcome to your Lovable project
+# Swipe to Shop - A Tinder-like Product Discovery App
 
-## Project info
+Swipe to Shop is a mobile application prototype featuring a Tinder-like swiping interface for discovering products. Users can swipe cards left, right, or up to indicate their preferences for products.
 
-**URL**: https://lovable.dev/projects/7cdd3d87-5b81-47e6-b652-cdb316bb8e9b
+![Swipe to Shop Preview](https://lovable.dev/projects/7cdd3d87-5b81-47e6-b652-cdb316bb8e9b/preview.png)
 
-## How can I edit this code?
+## Project URL
 
-There are several ways of editing your application.
+**Live Demo**: https://lovable.dev/projects/7cdd3d87-5b81-47e6-b652-cdb316bb8e9b
 
-**Use Lovable**
+## Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7cdd3d87-5b81-47e6-b652-cdb316bb8e9b) and start prompting.
+- **Interactive Card Swiping**: Tinder-like card swiping interaction for product discovery
+- **Multiple Swipe Actions**: 
+  - Swipe Right to like products
+  - Swipe Left to pass on products
+  - Swipe Up to add products to cart
+- **Product Information Display**:
+  - Product Image
+  - Product Name
+  - Brand Name
+  - Current Price
+  - Original Price (if discounted)
+  - Discount Percentage (where applicable)
+- **Smooth Animations**: GSAP-powered animations for a fluid user experience
+- **State Management**: Zustand-based state management
+- **Mobile Ready**: Packaged with Capacitor for native mobile deployment
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
+- **React**: UI component library
+- **TypeScript**: Type-safe JavaScript
+- **GSAP**: Animation library for smooth swipe interactions
+- **Zustand**: Lightweight state management
+- **React Query**: Data fetching and caching
+- **Tailwind CSS**: Utility-first CSS framework
+- **Vite**: Next-generation frontend tooling
+- **Capacitor.js**: Native runtime for cross-platform apps
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Running the Project
 
-## How can I deploy this project?
+### Web Development
 
-Simply open [Lovable](https://lovable.dev/projects/7cdd3d87-5b81-47e6-b652-cdb316bb8e9b) and click on Share -> Publish.
+```sh
+# Install dependencies
+npm install
 
-## Can I connect a custom domain to my Lovable project?
+# Start the development server
+npm run dev
 
-Yes, you can!
+# Build for production
+npm run build
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Mobile Development with Capacitor
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+After cloning and installing dependencies:
+
+```sh
+# Initialize Capacitor (already done in this project)
+# npx cap init
+
+# Build the web app first
+npm run build
+
+# Sync the web code to the native projects
+npx cap sync
+
+# Add platforms if needed
+npx cap add android
+npx cap add ios
+
+# Open native IDEs
+npx cap open android
+npx cap open ios
+```
+
+## Project Structure
+
+- `src/components/`: React components including CardStack and ProductCard
+- `src/store/`: Zustand state management
+- `src/pages/`: Application pages
+- `capacitor.config.ts`: Capacitor configuration for mobile builds
+
+## Interactions
+
+- **Like a Product**: Swipe card right
+- **Pass on a Product**: Swipe card left
+- **Add to Cart**: Swipe card up
+- **View Next Product**: After swiping, the next product automatically appears
+- **Reset**: When all products are viewed, you can start over
+
+## Mobile Deployment
+
+To deploy as a mobile application:
+1. Transfer the project to your own Github repository
+2. Git pull the project
+3. Run `npm install` to install dependencies
+4. Add platforms: `npx cap add ios` and/or `npx cap add android`
+5. Update native platforms: `npx cap update ios` and/or `npx cap update android`
+6. Build the project: `npm run build`
+7. Sync with native projects: `npx cap sync`
+8. Run on device/emulator: `npx cap run android` or `npx cap run ios`
+
+## Author
+
+Created by [Your Name] via Lovable AI
