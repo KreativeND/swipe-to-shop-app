@@ -59,18 +59,20 @@ export const CardStack = () => {
   }
   
   return (
-    <div className="relative w-full max-w-xs h-[600px] mx-auto">
+    <div className="relative w-full max-w-xs h-[600px] mx-auto flex flex-col">
       {/* Cards stack */}
-      {visibleProducts.map((product, index) => (
-        <SwipeableCard
-          key={product.id}
-          product={product}
-          isActive={index === 0}
-        />
-      ))}
+      <div className="flex-grow relative">
+        {visibleProducts.map((product, index) => (
+          <SwipeableCard
+            key={product.id}
+            product={product}
+            isActive={index === 0}
+          />
+        ))}
+      </div>
       
-      {/* Enhanced swipe instruction buttons with improved z-index */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-10 py-6 z-20">
+      {/* Enhanced swipe instruction buttons with improved spacing */}
+      <div className="flex justify-center space-x-10 py-6 z-20 mt-4">
         <button 
           className="bg-red-500 p-4 rounded-full text-white shadow-lg hover:bg-red-600 transition-all duration-300 transform hover:scale-110"
           aria-label="Dislike"
