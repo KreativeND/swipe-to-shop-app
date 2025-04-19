@@ -19,41 +19,41 @@ const Index = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
-        <header className="py-6 px-4 border-b border-gray-100">
+      <div className="min-h-screen bg-gradient-to-b from-pink-50 to-purple-50">
+        <header className="py-6 px-4 border-b border-pink-100">
           <div className="container mx-auto">
             <div className="flex justify-between items-center max-w-xs mx-auto">
               <button
                 onClick={() => setActiveView('liked')}
                 className={`relative p-2 rounded-full transition-colors ${
-                  activeView === 'liked' ? 'bg-purple-100' : 'hover:bg-purple-50'
+                  activeView === 'liked' ? 'bg-pink-100' : 'hover:bg-pink-50'
                 }`}
               >
                 <Heart 
-                  className={activeView === 'liked' ? 'text-purple-600' : 'text-gray-600'} 
+                  className={activeView === 'liked' ? 'text-pink-600' : 'text-gray-600'} 
                   size={24} 
                 />
                 {likedItems.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-purple-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-pink-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                     {likedItems.length}
                   </span>
                 )}
               </button>
               
-              <h1 className="text-2xl font-bold text-purple-700">Swipe to Shop</h1>
+              <h1 className="text-2xl font-bold text-pink-700">Swipe to Shop</h1>
               
               <button
                 onClick={() => setActiveView('cart')}
                 className={`relative p-2 rounded-full transition-colors ${
-                  activeView === 'cart' ? 'bg-purple-100' : 'hover:bg-purple-50'
+                  activeView === 'cart' ? 'bg-pink-100' : 'hover:bg-pink-50'
                 }`}
               >
                 <ShoppingCart 
-                  className={activeView === 'cart' ? 'text-purple-600' : 'text-gray-600'} 
+                  className={activeView === 'cart' ? 'text-pink-600' : 'text-gray-600'} 
                   size={24} 
                 />
                 {cartItems.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-purple-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-pink-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                     {cartItems.length}
                   </span>
                 )}
@@ -80,7 +80,7 @@ const Index = () => {
                   <h2 className="text-xl font-semibold text-gray-700">Liked Items</h2>
                   <button
                     onClick={() => setActiveView('discover')}
-                    className="text-sm text-purple-600 hover:text-purple-700"
+                    className="text-sm text-pink-600 hover:text-pink-700"
                   >
                     Back to Discover
                   </button>
@@ -99,7 +99,7 @@ const Index = () => {
                   <h2 className="text-xl font-semibold text-gray-700">Cart Items</h2>
                   <button
                     onClick={() => setActiveView('discover')}
-                    className="text-sm text-purple-600 hover:text-purple-700"
+                    className="text-sm text-pink-600 hover:text-pink-700"
                   >
                     Back to Discover
                   </button>
